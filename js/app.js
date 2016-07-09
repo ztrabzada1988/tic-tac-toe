@@ -1,45 +1,77 @@
 $(document).ready(function () {
 
-
-    // Step 1: Define global variables
-
-    // variables to define the X and O turns
     var X = "X";
     var O = "O";
     var turn = X;
-
     var counter = 0;
-
-    // Step 2: Define functions
-
-    // Append div for each box of tic tac toe to the .container div. THe box id will be from 1 to 9 for each box in the game (this is done for formatting purposes in css)
     for (var i = 1; i <= 9; i++) {
-        $('.container').append('<div class="fields" id="box' + i + '"></div>'); // i is the id # for each box
+        $('.container').append('<div class="fields" id="box' + i + '"></div>');
     }
 
-    // function to set the turn
+
     function setTurn() {
         $('.fields').click(function () {
+
             if ($(this).text() == "") {
                 $(this).text(turn);
                 counter++
-
+                //console.log(counter);
+                var id = $(this).text();
+                console.log(id);
+                //getChoice(id);
+                //checkPattern();
                 switchTurn();
 
+
             } else {
-                alert("thats field is already taken");
+                alert("This square has already been chosen.");
             }
+
+            function getChoice(id) {
+                console.log(id);
+                //return id;
+            }
+
+            // function checkPattern(a, b, c, turn) {
+            //     getChoice(id);
+            //     checkWin();
+            //     var result = false;
+
+            //     if (getChoice(a) == turn && getChoice(b) == turn && getChoice(c) == turn) {
+            //         result = true;
+            //     };
+            //     console.log(result);
+            //     return result;
+            // }
+
+            // function checkWin() {
+            //     var result = false;
+            //     if (checkPattern(box1, box2, box3, turn) ||
+            //         checkPattern(box4, box5, box6, turn) ||
+            //         checkPattern(box7, box8, box9, turn) ||
+            //         checkPattern(box1, box4, box7, turn) ||
+            //         checkPattern(box2, box5, box8, turn) ||
+            //         checkPattern(box3, box6, box9, turn) ||
+            //         checkPattern(box1, box5, box9, turn) ||
+            //         checkPattern(box3, box5, box7, turn)) {
+
+            //         result = true;
+            //     }
+
+            //     return result;
+            // }
+
         });
     }
 
-    // function to switch turns
     function switchTurn() {
         if (turn === X) {
             turn = O;
         } else {
             turn = X;
         }
+        //$('#gameTurn').text(turn + "'s Turn!")
     }
+
     setTurn();
 });
-// Step 3: Use functions
